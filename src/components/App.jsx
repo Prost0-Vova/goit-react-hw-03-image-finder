@@ -16,7 +16,7 @@ export class App extends Component {
     largeImg: null,
   };
 
-  handleSubmit = inputValue => {
+  handleSubmit = (inputValue) => {
     this.setState({ searchQuery: inputValue, page: 1, images: [] });
   };
 

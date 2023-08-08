@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
-import { ImageList, Button } from './ImageGallery.styled';
+import { ImageList} from './ImageGallery.styled';
 import PropTypes from 'prop-types';
 
 
