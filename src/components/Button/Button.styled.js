@@ -8,7 +8,9 @@ padding: 8px 16px;
   background-color: #3f51b5;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
-
+  margin:auto;
+  margin-top:20px;
+  margin-bottom: 20px;
   color: #fff;
   border: 0;
   text-decoration: none;
