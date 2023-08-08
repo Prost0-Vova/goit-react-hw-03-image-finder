@@ -1,24 +1,8 @@
-const BASE_URL = "https://pixabay.com";
-const API_KEY = "37997663-b81c648a4b06d98762fad9525"
-
-export const getImages = async ({ SearchQuery} ) => {
-    const params = new URLSearchParams({
-        q: SearchQuery,
-        page: 1,
-        key: API_KEY,
-        image_type: photo,
-        orientation: horizontal,
-        per_page:12,
-
-    });
-
-const response = await fetch(`${BASE_URL}/api/?${params}`);
-
-
-if(!response.ok){
-throw new Error("Smth went incorrectly");
-
+const getImages = (searchQuery, page = 1) => {
+  const API_KEY = '24502852-6a795cd657d1b023a90d357f4';
+  return fetch(
+    `https://pixabay.com/api/?q=${searchQuery}&page=${page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
+  ).then(res => res.json());
 };
 
-return await response.json();
-};
+export default getImages;
