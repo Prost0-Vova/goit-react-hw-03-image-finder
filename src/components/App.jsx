@@ -10,7 +10,7 @@ export class App extends Component {
   state = {
     searchQuery: '',
     images: [],
-    totalPages:0,
+    showBtn: true,
     page: 1,
     error: null,
     loading: false,
@@ -34,10 +34,10 @@ export class App extends Component {
     this.setState({ loading: true });
     getImages(searchQuery, page)
       .then(images => {
-        const { total } = images;
+        const { totalHits } = images;
         this.setState(prevState => ({
           images: [...prevState.images, ...images.hits],
-          totalPages: this.state.page < Math.ceil(total / 12),
+          showBtn: this.state.page < Math.ceil(totalHits / 12),
         }));
       })
       .catch(error => {
@@ -51,9 +51,8 @@ export class App extends Component {
   onClickLoadMore = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
-    }), () => {
-      this.fetchImages();
-    });
+    })
+    )
   };
 
   closeModal = () => {
@@ -65,7 +64,7 @@ export class App extends Component {
   };
 
   render() {
-    const { images, loading, largeImg } = this.state;
+    const { images, loading, largeImg, showBtn } = this.state;
 
     return (
       <>
@@ -78,7 +77,7 @@ export class App extends Component {
           />
         )}
 
-        {images.length > 0 && !loading && (
+        { !showBtn &&  (
   <ButtonLoad onClick={this.onClickLoadMore} />
   )}
         {largeImg && <Modall onClose={this.closeModal} url={largeImg} />}
