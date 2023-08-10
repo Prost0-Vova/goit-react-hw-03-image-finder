@@ -10,7 +10,7 @@ export class App extends Component {
   state = {
     searchQuery: '',
     images: [],
-    showBtn: true,
+    showBtn: false,
     page: 1,
     error: null,
     loading: false,
@@ -77,7 +77,7 @@ export class App extends Component {
           />
         )}
 
-        { !showBtn &&  (
+        { showBtn &&  (
   <ButtonLoad onClick={this.onClickLoadMore} />
   )}
         {largeImg && <Modall onClose={this.closeModal} url={largeImg} />}
