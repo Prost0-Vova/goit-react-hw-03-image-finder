@@ -37,7 +37,7 @@ export class App extends Component {
         const { total } = images;
         this.setState(prevState => ({
           images: [...prevState.images, ...images.hits],
-          totalPages: Math.ceil(total / 12),
+          totalPages: this.state.page < Math.ceil(total / 12),
         }));
       })
       .catch(error => {
